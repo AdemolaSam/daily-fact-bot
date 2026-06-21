@@ -1,0 +1,21 @@
+[package]
+name = "daily_fact_bot"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "daily_fact_bot"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "solana-gpt-oracle/idl-build"]
+
+[dependencies]
+anchor-lang = { version = "0.32.1", features = ["init-if-needed"] }
+solana-gpt-oracle = { git = "https://github.com/magicblock-labs/super-smart-contracts", rev = "1f86d5074467b0f3c38215ed554e5dd5b4a4b5c3", features = ["cpi"] }
+tuktuk-program = { git = "https://github.com/AvhiMaz/tuktuk", branch = "chore/bump-versions", package = "tuktuk-program" }
