@@ -17,5 +17,8 @@ idl-build = ["anchor-lang/idl-build", "solana-gpt-oracle/idl-build"]
 
 [dependencies]
 anchor-lang = { version = "0.32.1", features = ["init-if-needed"] }
+# solana-gpt-oracle declares ephemeral-rollups-sdk as "^0"; pin it to the
+# Anchor 0.32/Solana 2.3-compatible line to avoid resolving 0.15.x/Anchor 1.x.
+ephemeral-rollups-sdk = { version = "=0.13.0", features = ["anchor"] }
 solana-gpt-oracle = { git = "https://github.com/magicblock-labs/super-smart-contracts", rev = "1f86d5074467b0f3c38215ed554e5dd5b4a4b5c3", features = ["cpi"] }
 tuktuk-program = { git = "https://github.com/AvhiMaz/tuktuk", branch = "chore/bump-versions", package = "tuktuk-program" }

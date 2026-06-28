@@ -6,7 +6,11 @@ use solana_gpt_oracle::Identity;
 
 #[derive(Accounts)]
 pub struct ReceiveFact<'info> {
-    /// CHECK: Checked by seeds — only the oracle's identity PDA can sign this
+    #[account(
+        seeds = [b"identity"],
+        bump,
+        seeds::program = solana_gpt_oracle::ID
+    )]
     pub identity: Account<'info, Identity>,
 
     #[account(mut, seeds = [FACT_LOG_SEED], bump = fact_log.bump)]

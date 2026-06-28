@@ -1,7 +1,7 @@
 use crate::state::{Agent, FactLog};
 use crate::{AGENT_SEED, FACT_LOG_SEED};
 use anchor_lang::prelude::*;
-use solana_gpt_oracle::{ContextAccount, Counter};
+use solana_gpt_oracle::Counter;
 
 const AGENT_DESC: &str = "You are a fun-fact generator. \
     Respond with exactly one short, surprising fact. \

@@ -49,7 +49,11 @@ pub fn handler(ctx: Context<RequestFact>) -> Result<()> {
         "Give me today's fun fact.".to_string(),
         crate::ID,
         disc,
-        None, // no extra accounts needed — fact_log is a fixed, derivable PDA
+        Some(vec![OracleAccountMeta {
+            pubkey: ctx.accounts.fact_log.key(),
+            is_signer: false,
+            is_writable: true,
+        }]),
     )?;
 
     Ok(())

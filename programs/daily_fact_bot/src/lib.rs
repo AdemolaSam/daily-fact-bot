@@ -28,7 +28,7 @@ pub mod daily_fact_bot {
     }
 
     pub fn schedule(ctx: Context<Schedule>) -> Result<()> {
-        let bumps = ctx.bumps.clone();
-        instructions::schedule::handler(ctx, &bumps)
+        let queue_authority_bump = ctx.bumps.queue_authority;
+        instructions::schedule::handler(ctx, queue_authority_bump)
     }
 }
