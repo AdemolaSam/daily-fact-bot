@@ -9,7 +9,7 @@ pub use constants::*;
 use instructions::*;
 pub use state::*;
 
-declare_id!("dVwu33nvA71Dzdp1qgAinNTxpUMUBdYJ1Ue5g32SFkn");
+declare_id!("CyMNpNWg1aN3ohjibVPWCtdMiKgh7o98GJG8NKnr5dwR");
 
 #[program]
 pub mod daily_fact_bot {

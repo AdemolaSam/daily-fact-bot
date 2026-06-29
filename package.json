@@ -3,8 +3,8 @@
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-    "task:list": "tuktuk -u https://api.devnet.solana.com task list --task-queue-name scheduled-escrow",
-    "get-tuktuk": "tuktuk --url https://api.devnet.solana.com task-queue get --task-queue-name scheduled-escrow",
+    "task:list": "tuktuk -u https://api.devnet.solana.com task list --task-queue-name daily_fact_bot",
+    "get-tuktuk": "tuktuk --url https://api.devnet.solana.com task-queue get --task-queue-name daily_fact_bot",
     "test:devnet": "ANCHOR_PROVIDER_URL=https://api.devnet.solana.com ts-mocha -p ./tsconfig.json -t 120000 tests/**/*.ts",
     "test": "yarn test:devnet"
   },

@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-daily_fact_bot = "dVwu33nvA71Dzdp1qgAinNTxpUMUBdYJ1Ue5g32SFkn"
+daily_fact_bot = "CyMNpNWg1aN3ohjibVPWCtdMiKgh7o98GJG8NKnr5dwR"
 
 [provider]
 cluster = "devnet"

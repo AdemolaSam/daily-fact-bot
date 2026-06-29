@@ -26,7 +26,7 @@ pub struct Schedule<'info> {
     #[account(address = agent.context)]
     pub context_account: Account<'info, ContextAccount>,
 
-    #[account(seeds = [FACT_LOG_SEED], bump = fact_log.bump)]
+    #[account(mut, seeds = [FACT_LOG_SEED], bump = fact_log.bump)]
     pub fact_log: Account<'info, FactLog>,
 
     /// CHECK: Passed through to TukTuk CPI

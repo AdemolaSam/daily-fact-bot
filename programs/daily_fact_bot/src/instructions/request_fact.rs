@@ -20,7 +20,7 @@ pub struct RequestFact<'info> {
     pub context_account: Account<'info, ContextAccount>,
 
     /// CHECK: read in callback, not written here
-    #[account(seeds = [FACT_LOG_SEED], bump = fact_log.bump)]
+    #[account(mut, seeds = [FACT_LOG_SEED], bump = fact_log.bump)]
     pub fact_log: Account<'info, FactLog>,
 
     /// CHECK: Checked oracle id
@@ -44,16 +44,28 @@ pub fn handler(ctx: Context<RequestFact>) -> Result<()> {
         .try_into()
         .expect("discriminator must be 8 bytes");
 
+    let identity_pda = Pubkey::find_program_address(
+        &[b"identity"],
+        &solana_gpt_oracle::ID,
+    ).0;
+
     solana_gpt_oracle::cpi::interact_with_llm(
         cpi_ctx,
         "Give me today's fun fact.".to_string(),
         crate::ID,
         disc,
-        Some(vec![OracleAccountMeta {
-            pubkey: ctx.accounts.fact_log.key(),
-            is_signer: false,
-            is_writable: true,
-        }]),
+        Some(vec![
+            OracleAccountMeta {
+                pubkey: identity_pda,
+                is_signer: false,
+                is_writable: false,
+            },
+            OracleAccountMeta {
+                pubkey: ctx.accounts.fact_log.key(),
+                is_signer: false,
+                is_writable: true,
+            },
+        ]),
     )?;
 
     Ok(())
